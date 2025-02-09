@@ -4,6 +4,10 @@ import {
   Partials,
   Collection,
   EmbedBuilder,
+  CommandInteraction,
+  Message,
+  InteractionResponse,
+  MessageFlags,
 } from "discord.js";
 import settings from "../settings/config.js";
 
@@ -70,7 +74,7 @@ export class Bot extends Client {
           .setColor(this.config.embed.color)
           .setDescription(`${data.substring(0, 3000)}`),
       ],
-      ephemeral: ephemeral,
+      flags: ephemeral ? MessageFlags.Ephemeral : undefined,
     });
   }
 
@@ -89,7 +93,7 @@ export class Bot extends Client {
   /**
    * Sends a message or interaction response.
    * @param {CommandInteraction | Message} interactionOrMessage - The interaction or message.
-   * @param {InteractionReplyOptions} options - The options for the reply.
+   * @param {import("discord.js").InteractionReplyOptions} options - The options for the reply.
    * @returns {Promise<Message | InteractionResponse>} The sent message or interaction response.
    */
   async send(interactionOrMessage, options) {

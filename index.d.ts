@@ -9,7 +9,7 @@ import {
   InteractionResponse,
   ApplicationCommandDataResolvable,
   PermissionResolvable,
-} from "discord.js/typings";
+} from "discord.js";
 
 interface McommandOptions {
   client?: Bot;
